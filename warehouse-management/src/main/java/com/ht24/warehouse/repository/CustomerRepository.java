@@ -1,5 +1,24 @@
 package com.ht24.warehouse.repository;
 
-public class CustomerRepository {
 
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+import com.ht24.warehouse.entity.CustomerEntity;
+
+
+@Repository
+public interface CustomerRepository extends JpaRepository<CustomerEntity, Long>{
+	
+	// 1. Tìm chính xác 1 khách hàng bằng Mã khách hàng (Tương đương: SELECT * FROM customer WHERE customer_code = ?)
+    Optional<CustomerEntity> findByCustomerCode(String customerCode);
+
+    // 2. Tìm kiếm gần đúng theo Tên khách hàng (Tương đương: SELECT * FROM customer WHERE customer_name LIKE %?%)
+    // Chữ IgnoreCase giúp tìm kiếm không phân biệt chữ hoa chữ thường
+    List<CustomerEntity> findByCustomerNameContainingIgnoreCase(String name);
+
+    // 3. Tìm danh sách khách hàng theo Trạng thái (Ví dụ: "ACTIVE")
+    List<CustomerEntity> findByStatus(String status);
 }
