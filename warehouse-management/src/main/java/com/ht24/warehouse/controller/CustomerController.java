@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController // Khai báo đây là một API Controller trả về JSON
+@RequiredArgsConstructor
 @RequestMapping("/api/customers") // Đường dẫn gốc cho tất cả API trong class này
 @CrossOrigin(origins = "*") // Tạm thời cho phép mọi Frontend gọi vào để dễ test
-@RequiredArgsConstructor
 public class CustomerController {
 
     private final CustomerRepository customerRepository;
