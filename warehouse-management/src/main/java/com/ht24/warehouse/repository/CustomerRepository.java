@@ -13,12 +13,10 @@ import com.ht24.warehouse.entity.CustomerEntity;
 public interface CustomerRepository extends JpaRepository<CustomerEntity, Long>{
 	
 	// 1. Tìm chính xác 1 khách hàng bằng Mã khách hàng (Tương đương: SELECT * FROM customer WHERE customer_code = ?)
-    Optional<CustomerEntity> findByCustomerCode(String customerCode);
+    Optional<CustomerEntity> findByTaxCode(String taxCode);
 
     // 2. Tìm kiếm gần đúng theo Tên khách hàng (Tương đương: SELECT * FROM customer WHERE customer_name LIKE %?%)
     // Chữ IgnoreCase giúp tìm kiếm không phân biệt chữ hoa chữ thường
-    List<CustomerEntity> findByCustomerNameContainingIgnoreCase(String name);
+    List<CustomerEntity> findByFullNameContainingIgnoreCase(String fullName);
 
-    // 3. Tìm danh sách khách hàng theo Trạng thái (Ví dụ: "ACTIVE")
-    List<CustomerEntity> findByStatus(String status);
 }

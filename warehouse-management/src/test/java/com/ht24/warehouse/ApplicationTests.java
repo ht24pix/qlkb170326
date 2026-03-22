@@ -1,9 +1,9 @@
-package com.ht24.ware_house_management;
+package com.ht24.warehouse;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
+@SpringBootTest(classes = MainApp.class)
 class ApplicationTests {
 
 	@Test

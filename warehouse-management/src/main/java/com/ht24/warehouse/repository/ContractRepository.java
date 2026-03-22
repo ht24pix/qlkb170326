@@ -11,6 +11,6 @@ import com.ht24.warehouse.entity.ContractEntity;
 
 public interface ContractRepository extends JpaRepository<ContractEntity, Long>{
 	
-	@Query("SELECT c FROM ContractEntity c WHERE c.status = 'ACTIVE' AND c.endDate <= :checkDate")
+	@Query("SELECT c FROM ContractEntity c WHERE c.status = 'ACTIVE' AND c.dateEnd <= :checkDate")
 	List<ContractEntity> findExpirationContract(@Param("checkDate") LocalDate Date);
 }
